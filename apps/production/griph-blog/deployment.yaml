@@ -6,7 +6,7 @@ metadata:
   labels:
     app: griph-blog
 spec:
-  replicas: 6
+  replicas: 3
   strategy:
     type: RollingUpdate
     rollingUpdate:
