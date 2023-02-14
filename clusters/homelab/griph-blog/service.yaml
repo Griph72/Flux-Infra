@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: griph-blog-service
+  namespace: griph-blog
+  labels:
+    app: griph-blog
+spec:
+  ports:
+    - port: 8080
+      targetPort: griph-blog-tcp
+      protocol: TCP
+      name: griph-blog-svc-tcp
+  selector:
+    app: griph-blog
