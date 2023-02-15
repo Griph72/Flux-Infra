@@ -10,5 +10,4 @@ spec:
         name: github-regcred
     accessFrom:
         namespaceSelectors:
-            - matchLabels:
-                  kubernetes.io/metadata.name: flux-system
+            - matchLabels: {}

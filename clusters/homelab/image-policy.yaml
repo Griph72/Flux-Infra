@@ -1,9 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
     name: griph-blog
     namespace: flux-system
-    labels:
-        kubernetes.io/metadata.name: flux-system
 spec:
     imageRepositoryRef:
         name: griph-blog
