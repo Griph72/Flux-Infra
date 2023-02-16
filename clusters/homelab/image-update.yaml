@@ -15,6 +15,6 @@ spec:
     git:
         commit:
             author:
-                name: fluxcdbot  # moved from `authorName`
+                name: fluxcdbot
                 email: fluxcdbot@users.noreply.github.com
             messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
