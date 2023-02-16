@@ -24,7 +24,7 @@ spec:
         - name: github-regcred
       containers:
         - name: griph-blog
-          image: ghcr.io/griph72/griph-blog:latest
+          image: ghcr.io/griph72/griph-blog:latest # {"$imagepolicy": "flux-system:griph-blog"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
