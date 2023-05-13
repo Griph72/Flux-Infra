@@ -13,3 +13,21 @@ spec:
     policy:
         alphabetical:
             order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+    name: rowan-blog
+    namespace: flux-system
+spec:
+    imageRepositoryRef:
+        name: rowan-blog
+        namespace: rowan-blog
+    filterTags:
+        pattern: '^RELEASE\.(?P<timestamp>.*)$'
+        extract: '$timestamp'
+    policy:
+        alphabetical:
+            order: asc
