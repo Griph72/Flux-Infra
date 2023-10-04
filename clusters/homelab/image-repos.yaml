@@ -27,3 +27,19 @@ spec:
     accessFrom:
         namespaceSelectors:
             - matchLabels: {}
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+    name: intro-pres
+    namespace: intro-pres
+spec:
+    interval: 5m
+    image: ghcr.io/griph72/intro-presentation
+    secretRef:
+        name: github-regcred
+    accessFrom:
+        namespaceSelectors:
+            - matchLabels: {}

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intro-pres
+  namespace: intro-pres
+  labels:
+    app: intro-pres
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: intro-pres
+  template:
+    metadata:
+      labels:
+        app: intro-pres
+    spec:
+      imagePullSecrets:
+        - name: github-regcred
+      containers:
+        - name: intro-pres
+          image: ghcr.io/griph72/intro-presentation:RELEASE.2023-10-04T15-08-15 # {"$imagepolicy": "flux-system:intro-pres"}
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 80
+              name: intro-pres-tcp
+              protocol: TCP

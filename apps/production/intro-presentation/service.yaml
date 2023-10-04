@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: intro-pres-service
+  namespace: intro-pres
+  labels:
+    app: intro-pres
+spec:
+  ports:
+    - port: 8080
+      targetPort: intro-pres-tcp
+      protocol: TCP
+      name: intro-pres-svc-tcp
+  selector:
+    app: intro-pres
