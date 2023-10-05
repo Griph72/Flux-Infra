@@ -24,7 +24,7 @@ spec:
         - name: github-regcred
       containers:
         - name: intro-pres
-          image: ghcr.io/griph72/intro-presentation:RELEASE.2023-10-04T19-14-44 # {"$imagepolicy": "flux-system:intro-pres"}
+          image: ghcr.io/griph72/intro-presentation:RELEASE.2023-10-05T07-46-00 # {"$imagepolicy": "flux-system:intro-pres"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
