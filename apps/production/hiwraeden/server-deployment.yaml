@@ -21,7 +21,7 @@ spec:
         - name: github-regcred
       containers:
         - name: ancestry-server
-          image: ghcr.io/hiwraeden/ancestry-server:latest # {"$imagepolicy": "flux-system:ancestry-server"}
+          image: ghcr.io/hiwraeden/ancestry-server:RELEASE.2024-01-16T22-57-02 # {"$imagepolicy": "flux-system:ancestry-server"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
