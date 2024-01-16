@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ancestry-server
+  namespace: hiwraeden
+  labels:
+    app: ancestry-server
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+    matchLabels:
+      app: ancestry-server
+  template:
+    metadata:
+      labels:
+        app: ancestry-server
+    spec:
+      imagePullSecrets:
+        - name: github-regcred
+      containers:
+        - name: ancestry-server
+          image: ghcr.io/hiwraeden/ancestry-server:latest # {"$imagepolicy": "flux-system:ancestry-server"}
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 8000
+              name: server-tcp
+              protocol: TCP

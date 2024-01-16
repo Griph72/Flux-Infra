@@ -49,3 +49,39 @@ spec:
     policy:
         alphabetical:
             order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+    name: ancestry-server
+    namespace: flux-system
+spec:
+    imageRepositoryRef:
+        name: ancestry-server
+        namespace: hiwraeden
+    filterTags:
+        pattern: '^RELEASE\.(?P<timestamp>.*)$'
+        extract: '$timestamp'
+    policy:
+        alphabetical:
+            order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+    name: ancestry-ui
+    namespace: flux-system
+spec:
+    imageRepositoryRef:
+        name: ancestry-ui
+        namespace: hiwraeden
+    filterTags:
+        pattern: '^RELEASE\.(?P<timestamp>.*)$'
+        extract: '$timestamp'
+    policy:
+        alphabetical:
+            order: asc

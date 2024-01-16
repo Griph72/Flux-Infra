@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ancestry-ui-service
+  namespace: hiwraeden
+  labels:
+    app: ancestry-ui
+spec:
+  ports:
+    - port: 8000
+      targetPort: ui-tcp
+      protocol: TCP
+      name: ui-svc-tcp
+  selector:
+    app: ancestry-ui
