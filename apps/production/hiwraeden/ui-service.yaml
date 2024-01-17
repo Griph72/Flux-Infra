@@ -7,7 +7,7 @@ metadata:
     app: ancestry-ui
 spec:
   ports:
-    - port: 8000
+    - port: 8080
       targetPort: ui-tcp
       protocol: TCP
       name: ui-svc-tcp

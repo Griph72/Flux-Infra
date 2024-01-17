@@ -26,6 +26,6 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
               name: ui-tcp
               protocol: TCP
