@@ -23,6 +23,9 @@ spec:
         - name: ancestry-ui
           image: ghcr.io/hiwraeden/ancestry-ui:RELEASE.2024-01-16T23-54-13 # {"$imagepolicy": "flux-system:ancestry-ui"}
           imagePullPolicy: Always
+          env:
+            - name: VITE_SIMPLE_REST_URL
+              value: "https://hiwraeden.griph.co.uk/api"
           securityContext:
             allowPrivilegeEscalation: false
           ports:
