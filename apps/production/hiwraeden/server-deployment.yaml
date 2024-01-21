@@ -23,6 +23,10 @@ spec:
         - name: ancestry-server
           image: ghcr.io/hiwraeden/ancestry-server:RELEASE.2024-01-16T22-57-02 # {"$imagepolicy": "flux-system:ancestry-server"}
           imagePullPolicy: Always
+          env:
+            - name: MONGODB_URL
+              value: "mongodb://mongo-svc:27017"
+
           securityContext:
             allowPrivilegeEscalation: false
           ports:
