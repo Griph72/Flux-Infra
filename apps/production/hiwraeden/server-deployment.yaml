@@ -21,12 +21,11 @@ spec:
         - name: github-regcred
       containers:
         - name: ancestry-server
-          image: ghcr.io/hiwraeden/ancestry-server:RELEASE.2024-01-21T16-21-07 # {"$imagepolicy": "flux-system:ancestry-server"}
+          image: ghcr.io/hiwraeden/ancestry-server:RELEASE.2024-01-21T17-07-08 # {"$imagepolicy": "flux-system:ancestry-server"}
           imagePullPolicy: Always
           env:
             - name: MONGODB_URL
               value: "mongodb://mongo-svc:27017"
-
           securityContext:
             allowPrivilegeEscalation: false
           ports:
