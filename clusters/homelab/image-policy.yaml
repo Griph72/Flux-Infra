@@ -34,23 +34,6 @@ spec:
             
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
-kind: ImagePolicy
-metadata:
-    name: intro-pres
-    namespace: flux-system
-spec:
-    imageRepositoryRef:
-        name: intro-pres
-        namespace: intro-pres
-    filterTags:
-        pattern: '^RELEASE\.(?P<timestamp>.*)$'
-        extract: '$timestamp'
-    policy:
-        alphabetical:
-            order: asc
-
----
 
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
