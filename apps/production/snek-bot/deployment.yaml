@@ -11,23 +11,23 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app:  snek-bot
+      app: snek-bot
   template:
     metadata:
       labels:
-        app:  snek-bot
+        app: snek-bot
     spec:
       imagePullSecrets:
         - name: github-regcred
       containers:
         - name: snek-bot
-          image: FROM ghcr.io/opentoucan/snek-bot:RELEASE.2024-03-28T23-48-02 # {"$imagepolicy": "flux-system:snek-bot"}
+          image: ghcr.io/opentoucan/snek-bot:RELEASE.2024-03-28T23-48-02 # {"$imagepolicy": "flux-system:snek-bot"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
           env:
-          - name: DISCORD_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: discord-token
-                key: token
+            - name: DISCORD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: discord-token
+                  key: token
