@@ -68,3 +68,21 @@ spec:
     policy:
         alphabetical:
             order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+    name: snek-bot
+    namespace: flux-system
+spec:
+    imageRepositoryRef:
+        name: snek-bot
+        namespace: snek-bot
+    filterTags:
+        pattern: '^RELEASE\.(?P<timestamp>.*)$'
+        extract: '$timestamp'
+    policy:
+        alphabetical:
+            order: asc

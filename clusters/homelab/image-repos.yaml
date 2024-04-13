@@ -59,3 +59,19 @@ spec:
     accessFrom:
         namespaceSelectors:
             - matchLabels: {}
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+    name: snek-bot
+    namespace: snek-bot
+spec:
+    interval: 5m
+    image: ghcr.io/opentoucan/snek-bot
+    secretRef:
+        name: github-regcred
+    accessFrom:
+        namespaceSelectors:
+            - matchLabels: {}
