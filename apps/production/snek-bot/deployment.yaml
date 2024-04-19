@@ -21,7 +21,7 @@ spec:
         - name: github-regcred
       containers:
         - name: snek-bot
-          image: ghcr.io/opentoucan/snek-bot:RELEASE.2024-04-19T22-27-34 # {"$imagepolicy": "flux-system:snek-bot"}
+          image: ghcr.io/opentoucan/snek-bot:RELEASE.2024-04-19T22-45-51 # {"$imagepolicy": "flux-system:snek-bot"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
