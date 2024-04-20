@@ -86,3 +86,21 @@ spec:
     policy:
         alphabetical:
             order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+    name: kobot
+    namespace: flux-system
+spec:
+    imageRepositoryRef:
+        name: kobot
+        namespace: kobot
+    filterTags:
+        pattern: '^RELEASE\.(?P<timestamp>.*)$'
+        extract: '$timestamp'
+    policy:
+        alphabetical:
+            order: asc
