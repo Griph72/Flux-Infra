@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ancestry-server
+  name: ancestry-app
   namespace: hiwraeden
   labels:
-    app: ancestry-server
+    app: ancestry-app
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: ancestry-server
+      app: ancestry-app
   template:
     metadata:
       labels:
-        app: ancestry-server
+        app: ancestry-app
     spec:
       imagePullSecrets:
         - name: github-regcred
       containers:
-        - name: ancestry-server
-          image: ghcr.io/hiwraeden/ancestry-server:RELEASE.2024-01-21T17-35-11 # {"$imagepolicy": "flux-system:ancestry-server"}
+        - name: ancestry-app
+          image: ghcr.io/hiwraeden/ancestry-app:latest # {"$imagepolicy": "flux-system:ancestry-app"}
           imagePullPolicy: Always
           env:
-            - name: MONGODB_URL
-              value: "mongodb://mongo-svc:27017"
+            - name: DB_URL
+              value: "postgresql+psycopg2://postgres:wo5daT6E2hMgVi@postgres-svc:5432"
           securityContext:
             allowPrivilegeEscalation: false
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
               name: server-tcp
               protocol: TCP
