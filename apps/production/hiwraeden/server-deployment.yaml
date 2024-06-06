@@ -25,7 +25,10 @@ spec:
           imagePullPolicy: Always
           env:
             - name: DB_URL
-              value: "postgresql+psycopg2://postgres:wo5daT6E2hMgVi@postgres-svc:5432"
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: db-url
           securityContext:
             allowPrivilegeEscalation: false
           ports:
