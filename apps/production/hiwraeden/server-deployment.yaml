@@ -24,6 +24,8 @@ spec:
           image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-07T00-44-29 # {"$imagepolicy": "flux-system:ancestry-app"}
           imagePullPolicy: Always
           env:
+            - name: MODE
+              value: "prod"
             - name: DB_URL
               valueFrom:
                 secretKeyRef:
