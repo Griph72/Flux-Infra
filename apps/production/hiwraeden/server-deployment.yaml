@@ -21,7 +21,7 @@ spec:
         - name: github-regcred
       containers:
         - name: ancestry-app
-          image: ghcr.io/hiwraeden/ancestry-app:latest # {"$imagepolicy": "flux-system:ancestry-app"}
+          image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-07T00-14-33 # {"$imagepolicy": "flux-system:ancestry-app"}
           imagePullPolicy: Always
           env:
             - name: DB_URL
