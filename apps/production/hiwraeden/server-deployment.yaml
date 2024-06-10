@@ -22,6 +22,12 @@ spec:
       initContainers:
         - name: db-migration
           image: ghcr.io/hiwraeden/ancestry-migration:RELEASE.2024-06-10T23-12-18 # {"$imagepolicy": "flux-system:ancestry-db"}
+          env:
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: db-url
       containers:
         - name: ancestry-app
           image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-10T23-25-08 # {"$imagepolicy": "flux-system:ancestry-app"}
