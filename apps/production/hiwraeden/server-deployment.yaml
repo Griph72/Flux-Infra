@@ -19,6 +19,9 @@ spec:
     spec:
       imagePullSecrets:
         - name: github-regcred
+      initContainers:
+        - name: db-migration
+          image: ghcr.io/hiwraeden/ancestry-migration:RELEASE.2024-06-10T23-12-18 # {"$imagepolicy": "flux-system:ancestry-db"}
       containers:
         - name: ancestry-app
           image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-10T23-12-29 # {"$imagepolicy": "flux-system:ancestry-app"}
