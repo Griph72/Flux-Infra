@@ -30,7 +30,7 @@ spec:
                   key: db-url
       containers:
         - name: ancestry-app
-          image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-10T23-36-08 # {"$imagepolicy": "flux-system:ancestry-app"}
+          image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-12T20-34-06 # {"$imagepolicy": "flux-system:ancestry-app"}
           imagePullPolicy: Always
           env:
             - name: MODE
