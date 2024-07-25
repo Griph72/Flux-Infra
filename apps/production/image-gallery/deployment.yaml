@@ -29,7 +29,7 @@ spec:
             - containerPort: 8080
               name: server-tcp
               protocol: TCP
-        volumeMounts:
+          volumeMounts:
             - name: storage
               mountPath: /images
       volumes:
