@@ -92,6 +92,24 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy
 metadata:
+    name: image-gallery
+    namespace: flux-system
+spec:
+    imageRepositoryRef:
+        name: image-gallery
+        namespace: image-gallery
+    filterTags:
+        pattern: '^RELEASE\.(?P<timestamp>.*)$'
+        extract: '$timestamp'
+    policy:
+        alphabetical:
+            order: asc
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
     name: kobot
     namespace: flux-system
 spec:

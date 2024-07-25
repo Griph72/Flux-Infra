@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-gallery
+  namespace: image-gallery
+  labels:
+    app: image-gallery
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: image-gallery
+  template:
+    metadata:
+      labels:
+        app: image-gallery
+    spec:
+      imagePullSecrets:
+        - name: github-regcred
+      containers:
+        - name: image-gallery
+          image: ghcr.io/opentoucan/image-gallery:RELEASE.2024-07-25T20-48-03 # {"$imagepolicy": "flux-system:image-gallery"}
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 8080
+              name: server-tcp
+              protocol: TCP
+        volumeMounts:
+            - name: storage
+              mountPath: /images
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: image-pvc

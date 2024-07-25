@@ -81,6 +81,22 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageRepository
 metadata:
+    name: image-gallery
+    namespace: image-gallery
+spec:
+    interval: 5m
+    image: ghcr.io/opentoucan/image-gallery
+    secretRef:
+        name: github-regcred
+    accessFrom:
+        namespaceSelectors:
+            - matchLabels: {}
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
     name: kobot
     namespace: kobot
 spec:
