@@ -23,6 +23,11 @@ spec:
         - name: image-gallery
           image: ghcr.io/opentoucan/image-gallery:RELEASE.2024-07-25T20-48-03 # {"$imagepolicy": "flux-system:image-gallery"}
           imagePullPolicy: Always
+          env:
+            - name: PICTURE_FOLDER
+              value: "/images"
+            - name: GALLERIES
+              value: "140c18ec-2a93-421e-9a91-4611e3cbbc2b"
           securityContext:
             allowPrivilegeEscalation: false
           ports:
