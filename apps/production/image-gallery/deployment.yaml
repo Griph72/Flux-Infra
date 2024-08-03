@@ -27,7 +27,7 @@ spec:
             - name: PICTURE_FOLDER
               value: "/images"
             - name: GALLERIES
-              value: "140c18ec-2a93-421e-9a91-4611e3cbbc2b"
+              value: "140c18ec-2a93-421e-9a91-4611e3cbbc2b,c0d255e7-5a74-4dc6-bdc9-7ce559fca14a"
           securityContext:
             allowPrivilegeEscalation: false
           ports:
