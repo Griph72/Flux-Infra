@@ -21,7 +21,7 @@ spec:
         - name: github-regcred
       containers:
         - name: image-gallery
-          image: ghcr.io/opentoucan/image-gallery:RELEASE.2024-08-04T23-15-46 # {"$imagepolicy": "flux-system:image-gallery"}
+          image: ghcr.io/opentoucan/image-gallery:RELEASE.2024-11-26T00-41-57 # {"$imagepolicy": "flux-system:image-gallery"}
           imagePullPolicy: Always
           env:
             - name: PICTURE_FOLDER
