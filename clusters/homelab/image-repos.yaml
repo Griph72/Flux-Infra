@@ -14,7 +14,7 @@ spec:
 
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
     name: rowan-blog
@@ -30,7 +30,7 @@ spec:
 
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
     name: ancestry-app
@@ -46,7 +46,7 @@ spec:
 
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
     name: ancestry-db
@@ -62,7 +62,7 @@ spec:
 
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
     name: snek-bot
@@ -78,7 +78,7 @@ spec:
 
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
     name: image-gallery
@@ -94,7 +94,7 @@ spec:
 
 ---
 
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
     name: kobot
