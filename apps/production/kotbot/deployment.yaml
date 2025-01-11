@@ -17,8 +17,6 @@ spec:
       labels:
         app: kobot
     spec:
-      imagePullSecrets:
-        - name: regcred
       containers:
         - name: bot
           image: ghcr.io/opentoucan/kobot:RELEASE.2024-04-20T19-37-44 # {"$imagepolicy": "flux-system:kobot"}
