@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: bot
-          image: ghcr.io/opentoucan/kobot:RELEASE.2025-01-18T19-05-03 # {"$imagepolicy": "flux-system:kobot"}
+          image: ghcr.io/opentoucan/kobot:main.2025-01-19T23-20-08 # {"$imagepolicy": "flux-system:kobot"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
