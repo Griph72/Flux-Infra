@@ -19,15 +19,15 @@ spec:
     spec:
       containers:
         - name: bot
-          image: ghcr.io/opentoucan/kobot:RELEASE.2024-04-20T19-37-44 # {"$imagepolicy": "flux-system:kobot"}
+          image: ghcr.io/opentoucan/kobot:RELEASE.2025-01-18T19-05-03 # {"$imagepolicy": "flux-system:kobot"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
           volumeMounts:
-          - name: kobot-config-volume
-            subPath: application.properties
-            mountPath: /application.properties
+            - name: kobot-config-volume
+              subPath: application.properties
+              mountPath: /application.properties
       volumes:
-      - name: kobot-config-volume
-        configMap:
-          name: kobot-config
+        - name: kobot-config-volume
+          configMap:
+            name: kobot-config
