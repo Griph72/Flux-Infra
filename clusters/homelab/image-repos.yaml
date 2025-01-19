@@ -86,8 +86,6 @@ metadata:
 spec:
     interval: 5m
     image: ghcr.io/opentoucan/kobot
-    secretRef:
-        name: github-regcred
     accessFrom:
         namespaceSelectors:
             - matchLabels: {}
