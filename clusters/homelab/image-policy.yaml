@@ -99,7 +99,7 @@ spec:
         name: kobot
         namespace: kobot
     filterTags:
-        pattern: '^main\.(?P<timestamp>.*)$'
+        pattern: '^release\.(?P<timestamp>.*)$'
         extract: '$timestamp'
     policy:
         alphabetical:
