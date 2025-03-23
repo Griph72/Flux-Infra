@@ -6,7 +6,7 @@ metadata:
   labels:
     app: kobot
 spec:
-  replicas: 1
+  replicas: 0
   strategy:
     type: Recreate
   selector:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: bot
-          image: ghcr.io/opentoucan/kobot:main.2025-01-19T23-20-08 # {"$imagepolicy": "flux-system:kobot"}
+          image: ghcr.io/opentoucan/kobot:release.2025-02-15T13-13-06 # {"$imagepolicy": "flux-system:kobot"}
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
