@@ -13,3 +13,22 @@ spec:
       name: server-svc-tcp
   selector:
     app: image-gallery
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-gallery-lb
+  namespace: image-gallery
+  labels:
+    app: image-gallery
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: server-tcp
+      protocol: TCP
+      name: server-svc-tcp
+  selector:
+    app: image-gallery
