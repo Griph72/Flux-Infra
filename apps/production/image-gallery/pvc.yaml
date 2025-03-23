@@ -6,7 +6,22 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn
+  storageClassName: openebs-triple-replica
   resources:
     requests:
-      storage: 5Gi
+      storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+  namespace: image-gallery
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: openebs-triple-replica
+  resources:
+    requests:
+      storage: 500Mi

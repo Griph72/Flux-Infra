@@ -6,7 +6,7 @@ metadata:
   labels:
     app: image-gallery
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -21,13 +21,13 @@ spec:
         - name: github-regcred
       containers:
         - name: image-gallery
-          image: ghcr.io/opentoucan/image-gallery:RELEASE.2024-11-26T00-41-57 # {"$imagepolicy": "flux-system:image-gallery"}
+          image: ghcr.io/opentoucan/image-gallery:RELEASE.2025-03-23T21-26-22 # {"$imagepolicy": "flux-system:image-gallery"}
           imagePullPolicy: Always
           env:
             - name: PICTURE_FOLDER
               value: "/images"
-            - name: GALLERIES
-              value: "140c18ec-2a93-421e-9a91-4611e3cbbc2b,c0d255e7-5a74-4dc6-bdc9-7ce559fca14a,44a73985-7b35-409b-b0f8-29a74643c0cd"
+            - name: MONGODB_URI
+              value: "mongodb://mongo-svc:27017"
           securityContext:
             allowPrivilegeEscalation: false
           ports:
