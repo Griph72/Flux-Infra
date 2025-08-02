@@ -21,7 +21,7 @@ spec:
         - name: github-regcred
       initContainers:
         - name: db-migration
-          image: ghcr.io/hiwraeden/ancestry-migration:RELEASE.2024-06-12T21-37-01 # {"$imagepolicy": "flux-system:ancestry-db"}
+          image: ghcr.io/hiwraeden/ancestry-migration:RELEASE.2025-08-02T20-56-27 # {"$imagepolicy": "flux-system:ancestry-db"}
           env:
             - name: DB_URL
               valueFrom:
@@ -30,7 +30,7 @@ spec:
                   key: db-url
       containers:
         - name: ancestry-app
-          image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2024-06-12T21-37-01 # {"$imagepolicy": "flux-system:ancestry-app"}
+          image: ghcr.io/hiwraeden/ancestry-app:RELEASE.2025-08-02T20-56-27 # {"$imagepolicy": "flux-system:ancestry-app"}
           imagePullPolicy: Always
           env:
             - name: MODE
