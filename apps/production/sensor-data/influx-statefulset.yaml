@@ -32,6 +32,10 @@ spec:
           ports:
             - containerPort: 8181
               protocol: TCP
+          securityContext:
+            runAsUser: 1500
+            runAsGroup: 1500
+            fsGroup: 1500
           volumeMounts:
             - mountPath: /var/lib/influxdb3/data
               name: influxdb-data
