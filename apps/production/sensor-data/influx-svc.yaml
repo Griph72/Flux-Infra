@@ -4,6 +4,7 @@ metadata:
   name: influx-svc
   namespace: sensor-data
 spec:
+  type: LoadBalancer
   selector:
     app: influx-db
   ports:
