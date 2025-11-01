@@ -13,10 +13,9 @@ spec:
         app: influx-db
     spec:
       containers:
-        - image: influxdb:3-enterprise
-          name: influxdb3-enterprise
-          restartPolicy: Always
-        - args:
+        - name: influxdb3-enterprise
+          image: influxdb:3-enterprise
+          args:
             - influxdb3
             - serve
             - --node-id=node0
