@@ -21,8 +21,6 @@ spec:
             - --node-id=node0
             - --cluster-id=cluster0
             - --object-store=file
-            - --data-dir=/var/lib/influxdb3/data
-            - --plugin-dir=/var/lib/influxdb3/plugins
           env:
             - name: INFLUXDB3_ENTERPRISE_LICENSE_EMAIL
               valueFrom:
