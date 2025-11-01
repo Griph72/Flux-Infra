@@ -75,17 +75,3 @@ spec:
     accessFrom:
         namespaceSelectors:
             - matchLabels: {}
-
----
-
-apiVersion: image.toolkit.fluxcd.io/v1beta2
-kind: ImageRepository
-metadata:
-    name: kobot
-    namespace: kobot
-spec:
-    interval: 5m
-    image: ghcr.io/opentoucan/kobot
-    accessFrom:
-        namespaceSelectors:
-            - matchLabels: {}
