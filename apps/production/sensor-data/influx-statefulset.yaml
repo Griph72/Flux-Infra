@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: influx
+  namespace: sensor-data
+spec:
+  selector:
+    matchLabels:
+      app: influx-db
+  template:
+    metadata:
+      labels:
+        app: influx-db
+    spec:
+      containers:
+        - image: influxdb:3-enterprise
+          name: influxdb3-enterprise
+          restartPolicy: Always
+        - args:
+            - influxdb3
+            - serve
+            - --node-id=node0
+            - --cluster-id=cluster0
+            - --object-store=file
+            - --data-dir=/var/lib/influxdb3/data
+            - --plugin-dir=/var/lib/influxdb3/plugins
+          env:
+            - name: INFLUXDB3_ENTERPRISE_LICENSE_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: influx-secret
+                  key: license-email
+          ports:
+            - containerPort: 8181
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/influxdb3/data
+              name: influxdb-data
+            - mountPath: /var/lib/influxdb3/plugins
+              name: influxdb-plugins
+      volumes:
+        - name: influxdb-data
+          persistentVolumeClaim:
+            claimName: influxdb-data-pvc
+        - name: influxdb-plugins
+          persistentVolumeClaim:
+            claimName: influxdb-plugins-pvc
