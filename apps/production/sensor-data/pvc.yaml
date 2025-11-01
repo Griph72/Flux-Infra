@@ -10,18 +10,3 @@ spec:
   resources:
     requests:
       storage: 5Gi
-
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: influx-plugins-pvc
-  namespace: sensor-data
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: openebs-triple-replica
-  resources:
-    requests:
-      storage: 5Gi

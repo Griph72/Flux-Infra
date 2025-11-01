@@ -37,12 +37,7 @@ spec:
           volumeMounts:
             - mountPath: /home/influxdb3/.influxdb3
               name: influxdb-data
-            - mountPath: /plugins
-              name: influxdb-plugins
       volumes:
         - name: influxdb-data
           persistentVolumeClaim:
             claimName: influx-data-pvc
-        - name: influxdb-plugins
-          persistentVolumeClaim:
-            claimName: influx-plugins-pvc
