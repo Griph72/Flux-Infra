@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: influxdb-data
           persistentVolumeClaim:
-            claimName: influxdb-data-pvc
+            claimName: influx-data-pvc
         - name: influxdb-plugins
           persistentVolumeClaim:
-            claimName: influxdb-plugins-pvc
+            claimName: influx-plugins-pvc
