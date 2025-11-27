@@ -18,6 +18,7 @@ spec:
           args:
             - influxdb3
             - serve
+            - --without-auth
             - --node-id=node0
             - --cluster-id=cluster0
             - --object-store=file
