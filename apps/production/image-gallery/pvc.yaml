@@ -24,4 +24,4 @@ spec:
   storageClassName: openebs-triple-replica
   resources:
     requests:
-      storage: 500Mi
+      storage: 2Gi
