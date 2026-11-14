@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdc-web
+  namespace: sdc-web
+  labels:
+    app: sdc-web
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: sdc-web
+  template:
+    metadata:
+      labels:
+        app: sdc-web
+    spec:
+      imagePullSecrets:
+        - name: github-regcred
+      containers:
+        - name: sdc-web
+          image: ghcr.io/griph72/sd-consulting-web:RELEASE.2026-11-14T01-51-28
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 80
+              name: sdc-web-tcp
+              protocol: TCP

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdc-web-service
+  namespace: sdc-web
+  labels:
+    app: sdc-web
+spec:
+  ports:
+    - port: 8080
+      targetPort: sdc-web-tcp
+      protocol: TCP
+      name: sdc-web-svc-tcp
+  selector:
+    app: sdc-web

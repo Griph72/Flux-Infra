@@ -29,49 +29,19 @@ spec:
             - matchLabels: {}
 
 ---
-#
-#apiVersion: image.toolkit.fluxcd.io/v1beta2
-#kind: ImageRepository
-#metadata:
-#    name: ancestry-app
-#    namespace: hiwraeden
-#spec:
-#    interval: 5m
-#    image: ghcr.io/hiwraeden/ancestry-app
-#    secretRef:
-#        name: github-regcred
-#    accessFrom:
-#        namespaceSelectors:
-#            - matchLabels: {}
-#
-#---
-#
-#apiVersion: image.toolkit.fluxcd.io/v1beta2
-#kind: ImageRepository
-#metadata:
-#    name: ancestry-db
-#    namespace: hiwraeden
-#spec:
-#    interval: 5m
-#    image: ghcr.io/hiwraeden/ancestry-migration
-#    secretRef:
-#        name: github-regcred
-#    accessFrom:
-#        namespaceSelectors:
-#            - matchLabels: {}
-#
-#---
-#
-#apiVersion: image.toolkit.fluxcd.io/v1beta2
-#kind: ImageRepository
-#metadata:
-#    name: image-gallery
-#    namespace: image-gallery
-#spec:
-#    interval: 5m
-#    image: ghcr.io/opentoucan/image-gallery
-#    secretRef:
-#        name: github-regcred
-#    accessFrom:
-#        namespaceSelectors:
-#            - matchLabels: {}
+
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+    name: sdc-web
+    namespace: sdc-web
+spec:
+    interval: 5m
+    image: ghcr.io/griph72/sd-consulting-web
+    secretRef:
+        name: github-regcred
+    accessFrom:
+        namespaceSelectors:
+            - matchLabels: {}
+
+---
