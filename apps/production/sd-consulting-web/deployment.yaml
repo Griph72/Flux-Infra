@@ -24,7 +24,7 @@ spec:
         - name: github-regcred
       containers:
         - name: sdc-web
-          image: ghcr.io/griph72/sd-consulting-web:RELEASE.2026-11-14T01-51-28
+          image: ghcr.io/griph72/sd-consulting-web:RELEASE.2026-11-14T02-12-54
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
