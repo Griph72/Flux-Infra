@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: mongo
   namespace: image-gallery
+  labels:
+    app: mongo
 spec:
   strategy:
     type: Recreate
@@ -16,9 +18,20 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: mongo:8
+          image: mongo:9.0
           ports:
             - containerPort: 27017
+          readinessProbe:
+            exec:
+              command: ["mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
           volumeMounts:
             - name: storage
               mountPath: /data/db

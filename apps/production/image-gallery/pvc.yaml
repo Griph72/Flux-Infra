@@ -6,10 +6,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: openebs-triple-replica
+  storageClassName: longhorn
   resources:
     requests:
-      storage: 20Gi
+      storage: 30Gi
 
 ---
 
@@ -21,7 +21,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: openebs-triple-replica
+  storageClassName: longhorn
   resources:
     requests:
       storage: 2Gi
