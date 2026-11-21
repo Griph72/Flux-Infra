@@ -11,7 +11,7 @@ spec:
         namespace: flux-system
     update:
         strategy: Setters
-        path: ./apps
+        path: ./apps/production
     git:
         commit:
             author:
