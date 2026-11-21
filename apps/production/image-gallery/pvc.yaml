@@ -25,3 +25,22 @@ spec:
   resources:
     requests:
       storage: 2Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sessions-pvc
+  namespace: image-gallery
+  annotations:
+    # Login sessions. Losing them only logs people out, but there's no reason for Flux to delete them.
+    kustomize.toolkit.fluxcd.io/prune: disabled
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: openebs-triple-replica
+  resources:
+    requests:
+      # A few kilobytes per browser that has visited.
+      storage: 50Mi

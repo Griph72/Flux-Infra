@@ -37,6 +37,9 @@ spec:
               value: "mongodb://mongo-svc:27017"
             - name: MAX_UPLOAD_MB
               value: "1024"
+            # Login sessions, kept on a volume so restarts and new versions don't log everyone out.
+            - name: NICEGUI_STORAGE_PATH
+              value: "/sessions"
           # STORAGE_SECRET, BOOTSTRAP_ADMIN_USERNAME and BOOTSTRAP_ADMIN_PASSWORD, created by hand.
           envFrom:
             - secretRef:
@@ -78,6 +81,8 @@ spec:
               mountPath: /images
             - name: tmp
               mountPath: /tmp
+            - name: sessions
+              mountPath: /sessions
       volumes:
         - name: storage
           persistentVolumeClaim:
@@ -86,3 +91,6 @@ spec:
         - name: tmp
           emptyDir:
             sizeLimit: 3Gi
+        - name: sessions
+          persistentVolumeClaim:
+            claimName: sessions-pvc
