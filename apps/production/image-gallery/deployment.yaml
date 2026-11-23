@@ -28,7 +28,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: image-gallery
-          image: ghcr.io/opentoucan/image-gallery:RELEASE.2026-11-22T19-09-07 # {"$imagepolicy": "flux-system:image-gallery"}
+          image: ghcr.io/opentoucan/image-gallery:RELEASE.2026-11-23T23-37-13 # {"$imagepolicy": "flux-system:image-gallery"}
           imagePullPolicy: Always
           env:
             - name: PICTURE_FOLDER
