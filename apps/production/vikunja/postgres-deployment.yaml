@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: vikunja
+  labels:
+    app: postgres
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        # PostgreSQL 18 is the version Vikunja tests against.
+        - name: postgres
+          image: postgres:18-alpine
+          env:
+            - name: POSTGRES_USER
+              value: vikunja
+            - name: POSTGRES_DB
+              value: vikunja
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vikunja-secrets
+                  key: VIKUNJA_DATABASE_PASSWORD
+          ports:
+            - containerPort: 5432
+              name: postgres-tcp
+              protocol: TCP
+          readinessProbe:
+            exec:
+              command: ["pg_isready", "-h", "localhost", "-U", "vikunja"]
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
+          volumeMounts:
+            # PostgreSQL 18 keeps its data in a versioned folder under here, e.g. 18/docker.
+            - name: storage
+              mountPath: /var/lib/postgresql
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc

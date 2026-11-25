@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vikunja
+  namespace: vikunja
+  labels:
+    app: vikunja
+spec:
+  replicas: 1
+  # One pod at a time: the files volume can only be mounted by one node.
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: vikunja
+  template:
+    metadata:
+      labels:
+        app: vikunja
+    spec:
+      securityContext:
+        # The image runs as user 1000; this makes the files volume writable by it.
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: vikunja
+          image: vikunja/vikunja:2.8.0
+          env:
+            - name: VIKUNJA_DATABASE_TYPE
+              value: "postgres"
+            - name: VIKUNJA_DATABASE_HOST
+              value: "postgres-svc"
+            - name: VIKUNJA_DATABASE_USER
+              value: "vikunja"
+            - name: VIKUNJA_DATABASE_DATABASE
+              value: "vikunja"
+            - name: VIKUNJA_FILES_BASEPATH
+              value: "/app/vikunja/files"
+            - name: VIKUNJA_SERVICE_TIMEZONE
+              value: "Europe/London"
+            # The web app is served from the same origin and the worker calls the API server-side,
+            # so CORS isn't needed, and without it the public URL isn't required at startup.
+            - name: VIKUNJA_CORS_ENABLE
+              value: "false"
+          # VIKUNJA_SERVICE_SECRET, VIKUNJA_DATABASE_PASSWORD and optionally VIKUNJA_SERVICE_PUBLICURL, created by hand.
+          envFrom:
+            - secretRef:
+                name: vikunja-secrets
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 3456
+              name: server-tcp
+              protocol: TCP
+          # Vikunja exits and restarts until PostgreSQL accepts connections, then /api/v1/info answers 200.
+          startupProbe:
+            httpGet:
+              path: /api/v1/info
+              port: server-tcp
+            periodSeconds: 10
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /api/v1/info
+              port: server-tcp
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/v1/info
+              port: server-tcp
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+          volumeMounts:
+            - name: files
+              mountPath: /app/vikunja/files
+      volumes:
+        # Task attachments and avatars.
+        - name: files
+          persistentVolumeClaim:
+            claimName: vikunja-files-pvc
