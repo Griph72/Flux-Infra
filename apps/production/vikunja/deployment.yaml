@@ -40,6 +40,8 @@ spec:
               value: "/app/vikunja/files"
             - name: VIKUNJA_SERVICE_TIMEZONE
               value: "Europe/London"
+            - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
+              value: "false"
             # The web app is served from the same origin and the worker calls the API server-side,
             # so CORS isn't needed, and without it the public URL isn't required at startup.
             - name: VIKUNJA_CORS_ENABLE
